@@ -143,4 +143,10 @@ mod tests {
         let input = include_str!("example.txt");
         assert_eq!(part_two(input), 467_835);
     }
+
+    #[test]
+    fn test_part_two() {
+        let input = include_str!("input.txt");
+        assert_eq!(part_two(input), 75_220_503);
+    }
 }
