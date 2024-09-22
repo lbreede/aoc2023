@@ -6,18 +6,19 @@
 Advent of Code 2024
 
 Day 1: Trebuchet
-Part 1: 54,708 (129.17µs)
-Part 2: 54,087 (720.58µs)
+Part 1: 54,708 (169.65µs)
+Part 2: 54,087 (719.77µs)
 
 Day 2: Cube Conundrum
-Part 1: 2,101 (95.69µs)
-Part 2: 58,269 (89.20µs)
+Part 1: 2,101 (108.01µs)
+Part 2: 58,269 (99.51µs)
 
 Day 3: Gear Ratios
-Part 1: 509,115 (620.03µs)
-Part 2: 75,220,503 (569.53µs)
+Part 1: 509,115 (504.80µs)
+Part 2: 75,220,503 (596.49µs)
 
 Day 4: Scratchcards
-Part 1: 21,568 (461.37µs)
+Part 1: 21,568 (468.55µs)
+Part 2: 11,827,296 (11.67s)
 
 ```
