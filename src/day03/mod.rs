@@ -40,7 +40,7 @@ impl Part {
                 match schematic[i][j] {
                     '0'..='9' => (),
                     '.' => (),
-                    _ => return true
+                    _ => return true,
                 }
             }
         }
@@ -88,7 +88,6 @@ fn collect_parts(schematics: Vec<Vec<char>>) -> Vec<Part> {
     parts
 }
 
-
 fn part_one(input: &str) -> u32 {
     let schematics = parse_schematics(input);
     collect_parts(schematics.clone())
@@ -110,15 +109,14 @@ fn part_two(input: &str) -> u32 {
         }
     }
 
-    map
-        .iter()
+    map.iter()
         .filter(|(_, parts)| parts.len() == 2)
-        .map(|(_, val)| val
-            .clone()
-            .into_iter()
-            .map(|part| part.number)
-            .product::<u32>()
-        )
+        .map(|(_, val)| {
+            val.clone()
+                .into_iter()
+                .map(|part| part.number)
+                .product::<u32>()
+        })
         .sum()
 }
 

@@ -74,24 +74,13 @@ fn _part_one(input: &str) -> u32 {
     let mut result: u32 = 0;
     for line in input.lines() {
         let (id, rest) = line.split_once(": ").expect("Invalid format");
-        let id = id.split_once(" ").unwrap().1.parse::<u32>().expect("Invalid format");
-        result += rest
-            .split("; ")
-            .map(Game::new)
-            .fold(None, |max, current| match max {
-                None => Some(current),
-                Some(max) => Some(max.max(current))
-            }).unwrap().is_possible(12, 13, 14) * id
-    }
-    result
-}
-fn part_one(input: &str) -> u32 {
-    input
-        .lines()
-        .map(|line| line
-            .split_once(": ")
-            .expect("Invalid format")
+        let id = id
+            .split_once(" ")
+            .unwrap()
             .1
+            .parse::<u32>()
+            .expect("Invalid format");
+        result += rest
             .split("; ")
             .map(Game::new)
             .fold(None, |max, current| match max {
@@ -100,25 +89,47 @@ fn part_one(input: &str) -> u32 {
             })
             .unwrap()
             .is_possible(12, 13, 14)
-        ).enumerate()
+            * id
+    }
+    result
+}
+fn part_one(input: &str) -> u32 {
+    input
+        .lines()
+        .map(|line| {
+            line.split_once(": ")
+                .expect("Invalid format")
+                .1
+                .split("; ")
+                .map(Game::new)
+                .fold(None, |max, current| match max {
+                    None => Some(current),
+                    Some(max) => Some(max.max(current)),
+                })
+                .unwrap()
+                .is_possible(12, 13, 14)
+        })
+        .enumerate()
         .map(|(i, x)| (i as u32 + 1) * x)
         .sum()
 }
 fn part_two(input: &str) -> u32 {
     input
         .lines()
-        .map(|line| line
-            .split_once(": ")
-            .expect("Invalid format")
-            .1
-            .split("; ")
-            .map(Game::new)
-            .fold(None, |max, current| match max {
-                None => Some(current),
-                Some(max) => Some(max.max(current)),
-            })
-            .unwrap().power()
-        ).sum()
+        .map(|line| {
+            line.split_once(": ")
+                .expect("Invalid format")
+                .1
+                .split("; ")
+                .map(Game::new)
+                .fold(None, |max, current| match max {
+                    None => Some(current),
+                    Some(max) => Some(max.max(current)),
+                })
+                .unwrap()
+                .power()
+        })
+        .sum()
 }
 
 #[cfg(test)]
