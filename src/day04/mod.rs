@@ -98,7 +98,6 @@ fn part_two(input: &str) -> u32 {
     j
 }
 
-
 #[cfg(test)]
 mod tests {
     use super::*;
