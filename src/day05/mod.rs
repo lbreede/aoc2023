@@ -70,36 +70,6 @@ impl Map {
     }
 }
 
-fn find_min_location(input: &str, seed: u64) -> u64 {
-    let mut iter = input.split("\n\n").collect::<Vec<&str>>().into_iter();
-    iter.next();
-
-    // FIXME: Now we are creating a map per seed, that cannot be performant!
-    let seed_to_soil_map = Map::from(iter.next().unwrap().split_once("\n").unwrap().1);
-    let soil_to_fert_map = Map::from(iter.next().unwrap().split_once("\n").unwrap().1);
-    let fert_to_watr_map = Map::from(iter.next().unwrap().split_once("\n").unwrap().1);
-    let watr_to_lght_map = Map::from(iter.next().unwrap().split_once("\n").unwrap().1);
-    let lght_to_temp_map = Map::from(iter.next().unwrap().split_once("\n").unwrap().1);
-    let temp_to_humi_map = Map::from(iter.next().unwrap().split_once("\n").unwrap().1);
-    let humi_to_locn_map = Map::from(iter.next().unwrap().split_once("\n").unwrap().1);
-
-    // println!("Seeds: {:?}", seeds);
-    // println!("Seed-to-Soil Map: {:?}", seed_to_soil_map);
-    // println!("Soil-to-Fertilizer Map: {:?}", soil_to_fert_map);
-    // println!("Fertilizer-to-Water Map: {:?}", fert_to_watr_map);
-    // println!("Water-to-Light Map: {:?}", watr_to_lght_map);
-    // println!("Light-to-Temperature Map: {:?}", lght_to_temp_map);
-    // println!("Temperature-to-Humidity Map: {:?}", temp_to_humi_map);
-    // println!("Humidity-to-Location Map: {:?}", humi_to_locn_map);
-
-    let mut loc = seed_to_soil_map.convert(seed);
-    loc = soil_to_fert_map.convert(loc);
-    loc = fert_to_watr_map.convert(loc);
-    loc = watr_to_lght_map.convert(loc);
-    loc = lght_to_temp_map.convert(loc);
-    loc = temp_to_humi_map.convert(loc);
-    humi_to_locn_map.convert(loc)
-}
 fn part_one(input: &str) -> u64 {
     let mut iter = input.split("\n\n").collect::<Vec<&str>>().into_iter();
     let seeds: Vec<u64> = iter
@@ -172,20 +142,7 @@ fn part_two(input: &str) -> u64 {
         min_loc = loc.min(min_loc);
         bar.inc(1);
     }
-    return min_loc;
-    // all_seeds
-    //     .into_iter()
-    //     .map(|seed| {
-    //         let mut loc = seed_to_soil_map.convert(seed);
-    //         loc = soil_to_fert_map.convert(loc);
-    //         loc = fert_to_watr_map.convert(loc);
-    //         loc = watr_to_lght_map.convert(loc);
-    //         loc = lght_to_temp_map.convert(loc);
-    //         loc = temp_to_humi_map.convert(loc);
-    //         humi_to_locn_map.convert(loc)
-    //     })
-    //     .min()
-    //     .expect("should have found a min")
+    min_loc
 }
 
 #[cfg(test)]
