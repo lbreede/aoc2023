@@ -103,6 +103,11 @@ fn part_one(input: &str) -> u64 {
         .min()
         .expect("should have found a min")
 }
+
+/// Solve part 2
+///
+/// Takes ages, it's ridiculous! 
+/// TODO: Make fast one day!
 fn part_two(input: &str) -> u64 {
     let mut iter = input.split("\n\n").collect::<Vec<&str>>().into_iter();
     let seeds: Vec<u64> = iter

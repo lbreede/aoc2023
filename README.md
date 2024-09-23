@@ -21,4 +21,7 @@ Day 4: Scratchcards
 Part 1: 21,568 (468.55µs)
 Part 2: 11,827,296 (11.67s)
 
+Day 5: If You Give A Seed A Fertilizer
+Part 1: 388,071,289 (117.07µs)
+Part 2: 84,206,669 (6177.49s)
 ```
