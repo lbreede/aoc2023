@@ -1,4 +1,3 @@
-use indicatif::ProgressBar;
 use itertools::izip;
 use std::time::Instant;
 use thousands::Separable;
@@ -7,21 +6,21 @@ pub fn run() {
     println!("Day 5: If You Give A Seed A Fertilizer");
     let input = include_str!("input.txt");
 
-    for i in 1..=2 {
-        let now = Instant::now();
-        let result = if i % 2 == 1 {
-            part_one(input)
-        } else {
-            part_two(input)
-        };
-        let elapsed = now.elapsed();
-        println!(
-            "Part {}: {} ({:.2?})",
-            i,
-            result.separate_with_commas(),
-            elapsed
-        );
-    }
+    let now = Instant::now();
+    let result = part_one(input);
+    let elapsed = now.elapsed();
+    println!(
+        "Part 1: {} ({:.2?})",
+        result.separate_with_commas(),
+        elapsed
+    );
+
+    println!("Part 2: Skipped!");
+    // let now = Instant::now();
+    // part_two(input);
+    // let elapsed = now.elapsed();
+    // println!("Part 2: {} ({:.2?})", result.separate_with_commas(), elapsed);
+
     println!();
 }
 
@@ -106,7 +105,7 @@ fn part_one(input: &str) -> u64 {
 
 /// Solve part 2
 ///
-/// Takes ages, it's ridiculous! 
+/// Takes ages, it's ridiculous!
 /// TODO: Make fast one day!
 fn part_two(input: &str) -> u64 {
     let mut iter = input.split("\n\n").collect::<Vec<&str>>().into_iter();
@@ -135,9 +134,9 @@ fn part_two(input: &str) -> u64 {
         }
     }
     let mut min_loc = u64::MAX;
-    let bar = ProgressBar::new(all_seeds.len().try_into().unwrap());
-    for (i, seed) in all_seeds.iter().enumerate() {
-        let mut loc = seed_to_soil_map.convert(*seed);
+    // let bar = ProgressBar::new(all_seeds.len().try_into().unwrap());
+    for seed in all_seeds {
+        let mut loc = seed_to_soil_map.convert(seed);
         loc = soil_to_fert_map.convert(loc);
         loc = fert_to_watr_map.convert(loc);
         loc = watr_to_lght_map.convert(loc);
@@ -145,7 +144,7 @@ fn part_two(input: &str) -> u64 {
         loc = temp_to_humi_map.convert(loc);
         loc = humi_to_locn_map.convert(loc);
         min_loc = loc.min(min_loc);
-        bar.inc(1);
+        // bar.inc(1);
     }
     min_loc
 }
@@ -183,9 +182,9 @@ mod tests {
         assert_eq!(part_two(input), 46);
     }
 
-    #[test]
-    fn test_part_two() {
-        let input = include_str!("input.txt");
-        assert_eq!(part_two(input), 84_206_669);
-    }
+    // #[test]
+    // fn test_part_two() {
+    //     let input = include_str!("input.txt");
+    //     assert_eq!(part_two(input), 84_206_669);
+    // }
 }

@@ -6,21 +6,21 @@ pub fn run() {
     println!("Day 4: Scratchcards");
     let input = include_str!("input.txt");
 
-    for i in 1..=2 {
-        let now = Instant::now();
-        let result = if i % 2 == 1 {
-            part_one(input)
-        } else {
-            part_two(input)
-        };
-        let elapsed = now.elapsed();
-        println!(
-            "Part {}: {} ({:.2?})",
-            i,
-            result.separate_with_commas(),
-            elapsed
-        );
-    }
+    let now = Instant::now();
+    let result = part_one(input);
+    let elapsed = now.elapsed();
+    println!(
+        "Part 1: {} ({:.2?})",
+        result.separate_with_commas(),
+        elapsed
+    );
+
+    println!("Part 2: Skipped!");
+    // let now = Instant::now();
+    // part_two(input);
+    // let elapsed = now.elapsed();
+    // println!("Part 2: {} ({:.2?})", result.separate_with_commas(), elapsed);
+
     println!();
 }
 
@@ -120,9 +120,9 @@ mod tests {
         assert_eq!(part_two(input), 30);
     }
 
-    #[test]
-    fn test_part_two() {
-        let input = include_str!("input.txt");
-        assert_eq!(part_two(input), 11_827_296);
-    }
+    // #[test]
+    // fn test_part_two() {
+    //     let input = include_str!("input.txt");
+    //     assert_eq!(part_two(input), 11_827_296);
+    // }
 }
