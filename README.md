@@ -29,4 +29,7 @@ Day 6: Wait For It
 Part 1: 449,820 (1.51µs)
 Part 2: 449,820 (1.04µs)
 
+Day 7: Camel Cards
+Part 1: 248,422,077 (429.64µs)
+
 ```

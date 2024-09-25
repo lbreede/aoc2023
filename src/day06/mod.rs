@@ -20,8 +20,8 @@ pub fn run() {
     // let result part_two(input);
     // let elapsed = now.elapsed();
     // println!("Part 2: {} ({:.2?})", result.separate_with_commas(), elapsed);
-    //
-    // println!();
+    
+    println!();
 }
 
 fn record_beat_count(time: u64, record_dist: u64) -> usize {
