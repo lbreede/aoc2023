@@ -17,10 +17,10 @@ pub fn run() {
 
     println!("Part 2: Skipped!");
     // let now = Instant::now();
-    // part_two(input);
+    // let result part_two(input);
     // let elapsed = now.elapsed();
     // println!("Part 2: {} ({:.2?})", result.separate_with_commas(), elapsed);
-    // 
+    //
     // println!();
 }
 

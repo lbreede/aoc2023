@@ -24,4 +24,9 @@ Part 2: 11,827,296 (11.67s)
 Day 5: If You Give A Seed A Fertilizer
 Part 1: 388,071,289 (117.07µs)
 Part 2: 84,206,669 (6177.49s)
+
+Day 6: Wait For It
+Part 1: 449,820 (1.51µs)
+Part 2: 449,820 (1.04µs)
+
 ```
