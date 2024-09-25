@@ -123,13 +123,13 @@ fn parse_hand(line: &str) -> Hand {
         .chars()
         .map(card_value)
         .fold(0, |acc, n| acc * 100 + n);
-    
+
     Hand::new(hand_type, score, bid.parse().unwrap())
 }
 fn part_one(input: &str) -> u32 {
     input
         .lines()
-        .map(|line| parse_hand(line))
+        .map(parse_hand)
         .sorted()
         .enumerate()
         .map(|(i, hand)| hand.bid * (i as u32 + 1))
